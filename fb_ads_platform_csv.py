@@ -41,15 +41,15 @@ account_col_names = ['account_id', 'name', 'account_status', 'age', 'created_tim
 
 # See https://developers.facebook.com/docs/marketing-api/reference/ad-campaign-group
 campaign_dims = ['id', 'account_id', 'name', 'objective', 'start_time',  'stop_time', 'status', 'bid_strategy', 'budget_remaining', 'buying_type', 'daily_budget', 'source_campaign_id', 'spend_cap', 'created_time', 'updated_time']
-campaign_cols = ['id', 'account_id', 'name', 'objective', 'start_time',  'stop_time', 'status', 'bid_strategy', 'budget_remaining', 'buying_type', 'daily_budget', 'source_campaign_id', 'spend_cap', 'created_time', 'updated_time', 'row_updated_at']
+campaign_cols = ['campaign_id', 'account_id', 'name', 'objective', 'start_time',  'stop_time', 'status', 'bid_strategy', 'budget_remaining', 'buying_type', 'daily_budget', 'source_campaign_id', 'spend_cap', 'created_time', 'updated_time', 'row_updated_at']
 
 # See https://developers.facebook.com/docs/marketing-api/reference/ad-campaign
 adset_dims = ['id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'start_time', 'end_time', 'bid_amount', 'bid_strategy', 'budget_remaining', 'daily_budget', 'daily_min_spend_target', 'daily_spend_cap', 'lifetime_budget', 'lifetime_imps', 'lifetime_min_spend_target', 'lifetime_spend_cap', 'destination_type', 'is_dynamic_creative', 'source_adset_id',  'created_time', 'updated_time']
-adset_cols = ['id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'start_time', 'end_time', 'bid_amount', 'bid_strategy', 'budget_remaining', 'daily_budget', 'daily_min_spend_target', 'daily_spend_cap', 'lifetime_budget', 'lifetime_imps', 'lifetime_min_spend_target', 'lifetime_spend_cap', 'destination_type', 'is_dynamic_creative', 'source_adset_id',  'created_time', 'updated_time', 'row_updated_at']
+adset_cols = ['adset_id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'start_time', 'end_time', 'bid_amount', 'bid_strategy', 'budget_remaining', 'daily_budget', 'daily_min_spend_target', 'daily_spend_cap', 'lifetime_budget', 'lifetime_imps', 'lifetime_min_spend_target', 'lifetime_spend_cap', 'destination_type', 'is_dynamic_creative', 'source_adset_id',  'created_time', 'updated_time', 'row_updated_at']
 
 # See https://developers.facebook.com/docs/marketing-api/reference/adgroup
 ad_dims = ['id', 'adset_id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'bid_amount', 'created_time', 'updated_time']
-ad_dim_cols = ['id', 'adset_id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'bid_amount', 'created_time', 'updated_time', 'row_updated_at']
+ad_dim_cols = ['ad_id', 'adset_id', 'campaign_id', 'account_id', 'name', 'status', 'effective_status', 'bid_amount', 'created_time', 'updated_time', 'row_updated_at']
 
 # See https://developers.facebook.com/docs/marketing-api/reference/adgroup/insights/v5.0
 ad_metrics = ['ad_id', 'adset_id', 'campaign_id', 'account_id', 'buying_type', 'spend', 'impressions', 'reach', 'frequency', 'clicks', 'unique_clicks', 'conversions', 'conversion_rate_ranking', 'actions', 'action_values', 'cost_per_action_type', 'ad_click_actions', 'ad_impression_actions', 'age_targeting', 'auction_bid', 'auction_competitiveness', 'auction_max_competitor_bid', 'canvas_avg_view_percent', 'canvas_avg_view_time', 'conversion_values', 'cost_per_15_sec_video_view', 'cost_per_2_sec_continuous_video_view', 'cost_per_ad_click', 'cost_per_conversion', 'cost_per_dda_countby_convs', 'cost_per_estimated_ad_recallers', 'cost_per_inline_link_click', 'cost_per_inline_post_engagement', 'cost_per_one_thousand_ad_impression', 'cost_per_outbound_click', 'cost_per_thruplay', 'cost_per_unique_action_type', 'cost_per_unique_click', 'cost_per_unique_inline_link_click', 'cost_per_unique_outbound_click', 'cpc', 'cpm', 'cpp', 'created_time', 'ctr', 'date_start', 'date_stop', 'dda_countby_convs', 'engagement_rate_ranking', 'estimated_ad_recall_rate', 'estimated_ad_recall_rate_lower_bound', 'estimated_ad_recall_rate_upper_bound', 'estimated_ad_recallers', 'estimated_ad_recallers_lower_bound', 'estimated_ad_recallers_upper_bound', 'full_view_impressions', 'full_view_reach', 'gender_targeting', 'inline_link_click_ctr', 'inline_link_clicks', 'inline_post_engagement', 'instant_experience_clicks_to_open', 'instant_experience_clicks_to_start', 'instant_experience_outbound_clicks', 'labels', 'location', 'mobile_app_purchase_roas', 'objective', 'outbound_clicks', 'outbound_clicks_ctr', 'place_page_name', 'purchase_roas', 'quality_ranking', 'social_spend', 'unique_actions', 'unique_ctr', 'unique_inline_link_click_ctr', 'unique_inline_link_clicks', 'unique_link_clicks_ctr', 'unique_outbound_clicks', 'unique_outbound_clicks_ctr', 'unique_video_view_15_sec', 'updated_time', 'video_15_sec_watched_actions', 'video_30_sec_watched_actions', 'video_avg_time_watched_actions', 'video_continuous_2_sec_watched_actions', 'video_p100_watched_actions', 'video_p25_watched_actions', 'video_p50_watched_actions', 'video_p75_watched_actions', 'video_p95_watched_actions', 'video_play_actions', 'video_play_curve_actions', 'video_play_retention_0_to_15s_actions', 'video_play_retention_20_to_60s_actions', 'video_play_retention_graph_actions', 'video_thruplay_watched_actions', 'video_time_watched_actions', 'website_ctr', 'website_purchase_roas', 'wish_bid']
@@ -97,6 +97,7 @@ with tempfile.NamedTemporaryFile() as account_csv:
         account_writer = csv.DictWriter(file_obj, account_col_names, quoting=csv.QUOTE_ALL,
                                      restval=None, extrasaction="ignore")
         account_writer.writeheader()
+        LOG.info("account - making API call")
         account_row = account.api_get(fields=account_dims)
         account_row["row_updated_at"] = datetime.datetime.now(pytz.utc).isoformat()
         account_writer.writerow(account_row)
@@ -106,6 +107,7 @@ with tempfile.NamedTemporaryFile() as account_csv:
                                       table=('{}.{}_accounts'.format(schema_name, table_name_prefix)),
                                       headers=True,
                                       existing_table_rows='drop'))
+    LOG.info("account - processing job")
     process_civis_jobs(jobs)
 
 LOG.info("campaigns")
@@ -118,6 +120,7 @@ with tempfile.NamedTemporaryFile() as campaign_csv:
         for campaign in campaigns:
             LOG.info("campaigns - making API call")
             campaign_row = campaign.api_get(fields=campaign_dims)
+            campaign_row["campaign_id"] = campaign_row["id"]
             campaign_row["row_updated_at"] = datetime.datetime.now(pytz.utc).isoformat()
             campaign_writer.writerow(campaign_row)
     jobs = []
@@ -139,6 +142,7 @@ with tempfile.NamedTemporaryFile() as adset_csv:
         for adset in adsets:
             LOG.info("adsets - making API call")
             adset_row = adset.api_get(fields=adset_dims)
+            adset_row["adset_id"] = adset_row["id"]
             adset_row["row_updated_at"] = datetime.datetime.now(pytz.utc).isoformat()
             adset_writer.writerow(adset_row)
     jobs = []

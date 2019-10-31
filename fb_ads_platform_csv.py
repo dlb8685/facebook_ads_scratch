@@ -164,6 +164,7 @@ with tempfile.NamedTemporaryFile() as ad_csv:
         for ad in ads:
             LOG.info("ads - making API call")
             ad_row = ad.api_get(fields=ad_dims)
+            ad_row["ad_id"] = ad_row["id"]
             ad_row["row_updated_at"] = datetime.datetime.now(pytz.utc).isoformat()
             ad_writer.writerow(ad_row)
     jobs = []

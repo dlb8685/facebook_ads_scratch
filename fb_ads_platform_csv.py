@@ -12,6 +12,9 @@ from facebook_business.adobjects.adset import AdSet
 from facebook_business.adobjects.ad import Ad
 from facebook_business.adobjects.adsinsights import AdsInsights
 
+LOG = logging.getLogger(__name__)
+LOG.setLevel(logging.INFO)
+LOG.info("starting process")
 
 fb_access_token = os.environ.get("FB_ACCESS_TOKEN")
 fb_ad_account_id = os.environ.get("FB_AD_ACCOUNT_ID")
@@ -19,8 +22,12 @@ database_name = os.environ.get("DATABASE_NAME")
 schema_name = os.environ.get("SCHEMA_NAME")
 table_name_prefix = os.environ.get("TABLE_NAME_PREFIX")
 
+LOG.info("imported enrivonment vars")
+LOG.info("initializing FB Ads API")
+
 FacebookAdsApi.init(access_token=fb_access_token)
 
+LOG.info("initialized FB Ads API")
 
 # See https://developers.facebook.com/docs/marketing-api/reference/ad-account
 account_dims = ['account_id', 'name', 'account_status', 'age', 'created_time', 'currency', 'timezone_name']
@@ -40,7 +47,6 @@ ad_metrics = ['ad_id', 'adset_id', 'campaign_id', 'account_id', 'buying_type', '
 
 
 # Stand-in for importing this from hippo.
-LOG = logging.getLogger(__name__)
 def process_civis_jobs(jobs, success_action=None, failure_action=None):
     if not isinstance(jobs, (list, tuple, set)):
         jobs = [jobs]
@@ -152,8 +158,10 @@ with tempfile.NamedTemporaryFile() as ad_insight_csv:
         ad_insight_writer = csv.DictWriter(file_obj, ad_metrics, quoting=csv.QUOTE_ALL, restval=None, extrasaction='ignore')
         ad_insight_writer.writeheader()
         for ad in ads:
-            ad_insight_row = ad.get_insights(fields=ad_metrics)[0]
-            ad_insight_writer.writerow(ad_insight_row)
+            # This can easily return multiple rows, for different dates, breakdowns
+            ad_insight_rows = ad.get_insights(fields=ad_metrics)
+            for row in ad_insight_rows:
+                ad_insight_writer.writerow(row)
     jobs = []
     jobs.append(civis.io.csv_to_civis(filename=ad_insight_csv.name,
                                   database=database_name,

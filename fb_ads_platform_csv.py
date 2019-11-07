@@ -139,7 +139,7 @@ with tempfile.NamedTemporaryFile() as adset_csv:
     with open(adset_csv.name, mode="w", newline="\n") as file_obj:
         adset_writer = csv.DictWriter(file_obj, adset_cols, quoting=csv.QUOTE_ALL, restval=None, extrasaction='ignore')
         adset_writer.writeheader()
-        for adset in adsets:
+        for adset in adsets[:12]:
             LOG.info("adsets - making API call")
             adset_row = adset.api_get(fields=adset_dims)
             adset_row["adset_id"] = adset_row["id"]
@@ -161,7 +161,7 @@ with tempfile.NamedTemporaryFile() as ad_csv:
     with open(ad_csv.name, mode="w", newline="\n") as file_obj:
         ad_writer = csv.DictWriter(file_obj, ad_dim_cols, quoting=csv.QUOTE_ALL, restval=None, extrasaction='ignore')
         ad_writer.writeheader()
-        for ad in ads:
+        for ad in ads[:12]:
             LOG.info("ads - making API call")
             ad_row = ad.api_get(fields=ad_dims)
             ad_row["ad_id"] = ad_row["id"]
@@ -183,7 +183,7 @@ with tempfile.NamedTemporaryFile() as ad_insight_csv:
     with open(ad_insight_csv.name, mode="w", newline="\n") as file_obj:
         ad_insight_writer = csv.DictWriter(file_obj, ad_cols, quoting=csv.QUOTE_ALL, restval=None, extrasaction='ignore')
         ad_insight_writer.writeheader()
-        for ad in ads:
+        for ad in ads[:12]:
             LOG.info("ad_insights - making API call")
             ad_insight_rows = ad.get_insights(fields=ad_metrics, params=ad_params)
             for row in ad_insight_rows:
